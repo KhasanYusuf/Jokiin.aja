@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jokiin.Aja</title>
+    <title>Jokiin.Aja @yield('title', '') </title>
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -95,6 +95,33 @@
             </div>
         </div>
     </div> <!-- End site branding area -->
+
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li @yield('home', '') ><a href="{{ url('/') }}">Home</a></li>
+                        <li @yield('shop', '') ><a href="{{ url('/shop') }}">Shop page</a></li>
+                        <li @yield('prod', '') ><a href="{{ url('/single-product') }}">Single product</a></li>
+                        <li @yield('cart', '') ><a href="{{ url('/cart') }}">Cart</a></li>
+                        <li @yield('chk', '') ><a href="{{ url('checkout/') }}">Checkout</a></li>
+                        <!-- <li><a href="#">Category</a></li>
+                        <li><a href="#">Others</a></li>
+                        <li><a href="#">Contact</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End mainmenu area -->
 
     @yield('content')
 
