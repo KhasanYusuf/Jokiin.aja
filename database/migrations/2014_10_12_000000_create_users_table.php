@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->unique(); // Menambahkan kolom nomor HP
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['user', 'penjoki', 'admin'])->default('user'); // Tipe user
             $table->rememberToken();
             $table->timestamps();
         });
