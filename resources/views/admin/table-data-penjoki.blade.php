@@ -1,68 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Penjoki</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
-    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-</head>
-
-<body>
-    <div id="app">
-        <div id="sidebar" class="active">
-            <div class="sidebar-wrapper active">
-                <div class="sidebar-menu">
-                    <ul class="menu">
-                        <li class="sidebar-title">Menu</li>
-
-                        <li class="sidebar-item active">
-                            <a href="admin-dashboard.html" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-stack"></i>
-                                <span>Data</span>
-                            </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item ">
-                                    <a href="admin-table-data-admin.html">Admin</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="admin-table-data-penjoki.html">Penjoki</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="admin-table-data-pelanggan.html">Pelanggan</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item  ">
-                            <a href="admin-data-penarikan.html" class='sidebar-link'>
-                                <i class="bi bi-file-earmark-spreadsheet-fill"></i>
-                                <span>Penarikan</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item pt-5 active">
-                            <a href="#" class='sidebar-link' style="background-color: rgb(177, 53, 53);">
-                                <i class="bi bi-box-arrow-left"></i>
-                                <span>Log Out</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
-            </div>
-        </div>
+@extends('admin/adminBase')
+@section('title', '| Data Penjoki')
+@section('content')
         <div id="main">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
@@ -127,6 +65,4 @@
         let dataTable = new simpleDatatables.DataTable(table1);
     </script>
     <script src="assets/js/main.js"></script>
-</body>
-
-</html>
+@endsection

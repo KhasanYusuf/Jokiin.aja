@@ -16,7 +16,8 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
+
 Route::get('/profile', function () {
     return view('profile');
 });
@@ -43,4 +44,27 @@ Route::get('/cart', function () {
 });
 Route::get('/checkout', function () {
     return view('checkout');
+});
+
+#Admin Route
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin/dashboard');
+    })->name('dashboardAdmin');
+
+    Route::get('/datapenarikan', function () {
+        return view('admin/data-penarikan');
+    })->name('datapenarikan');
+
+    Route::get('/tabledataadmin', function () {
+        return view('admin/table-data-admin');
+    })->name('tabledataadmin');
+
+    Route::get('/tabledatapelanggan', function () {
+        return view('admin/table-data-pelanggan');
+    })->name('tabledatapelanggan');
+
+    Route::get('/tabledatapenjoki', function () {
+        return view('admin/table-data-penjoki');
+    })->name('tabledatapenjoki');
 });
