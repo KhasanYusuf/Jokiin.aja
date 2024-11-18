@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="css/app.css">
 
     <style>
-        .u-form-group input[type="text"],
         .u-form-group input[type="email"],
         .u-form-group input[type="password"]{
             width: calc(50% - 22px);

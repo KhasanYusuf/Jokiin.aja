@@ -10,18 +10,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jokiin.Aja | Login-Register</title>
-    
+
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
-    
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    
+
     <!-- Custom CSS -->
     <!-- <link rel="stylesheet" href="css/owl.carousel.css"> -->
     <link rel="stylesheet" href="css/app.css">
@@ -36,7 +36,7 @@
     <![endif]-->
   </head>
   <body>
-   
+
     <!-- <div class="header-area">
         <div class="container">
             <div class="row">
@@ -51,7 +51,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4">
                     <div class="header-right">
                         <ul class="list-unstyled list-inline">
@@ -79,8 +79,8 @@
         </div>
     </div>  -->
     <!-- End header area -->
-    
-    
+
+
   <div class="login-box">
     <div class="lb-header">
       <a href="#" class="active" id="login-box-link">Login</a>
@@ -96,33 +96,35 @@
         log in with Google
       </a>
     </div>
-    <form class="email-login">
+    <form method="POST" action="/login" class="email-login">
+        @csrf
       <div class="u-form-group">
-        <input type="email" placeholder="Email"/>
+        <input type="email" name="email" placeholder="Email"/>
       </div>
       <div class="u-form-group">
-        <input type="password" placeholder="Password"/>
+        <input type="password" name="password" placeholder="Password"/>
       </div>
       <div class="u-form-group">
-        <button>Log in</button>
-      </div>
-      <div class="u-form-group">
-        <a href="#" class="forgot-password">Forgot password?</a>
+        <button type="submit">Log in</button>
       </div>
     </form>
-    <form class="email-signup">
-      <div class="u-form-group">
-        <input type="email" placeholder="Email"/>
-      </div>
-      <div class="u-form-group">
-        <input type="password" placeholder="Password"/>
-      </div>
-      <div class="u-form-group">
-        <input type="password" placeholder="Confirm Password"/>
-      </div>
-      <div class="u-form-group">
-        <button>Sign Up</button>
-      </div>
+    <form method="POST" action="/register" class="email-signup">
+        @csrf
+        <div class="u-form-group">
+            <input type="text" name="name" placeholder="Name" required/>
+        </div>
+        <div class="u-form-group">
+            <input type="email" name="email" placeholder="Email" required/>
+        </div>
+        <div class="u-form-group">
+            <input type="text" name="phone" placeholder="Phone Number" required/> <!-- Tambahkan input nomor HP -->
+        </div>
+        <div class="u-form-group">
+            <input type="password" name="password" placeholder="Password" required/>
+        </div>
+        <div class="u-form-group">
+            <button type="submit">Sign Up</button>
+        </div>
     </form>
   </div>
 
@@ -143,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">User Navigation </h2>
@@ -153,10 +155,10 @@
                             <li><a href="">Wishlist</a></li>
                             <li><a href="">Vendor contact</a></li>
                             <li><a href="">Front page</a></li>
-                        </ul>                        
+                        </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Categories</h2>
@@ -166,10 +168,10 @@
                             <li><a href="">Top Up</a></li>
                             <li><a href="">Terbaru</a></li>
                             <li><a href="">Produk</a></li>
-                        </ul>                        
+                        </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-newsletter">
                         <h2 class="footer-wid-title">Newsletter</h2>
@@ -191,7 +193,7 @@
                        <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4">
                     <div class="footer-card-icon">
                         <i class="fa fa-cc-discover"></i>
@@ -203,20 +205,20 @@
             </div>
         </div>
     </div> -->
-   
+
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
-    
+
     <!-- Bootstrap JS form CDN -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    
+
     <!-- jQuery sticky menu -->
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.sticky.js"></script>
-    
+
     <!-- jQuery easing -->
     <script src="js/jquery.easing.1.3.min.js"></script>
-    
+
     <!-- Main Script -->
     <!-- <script src="js/main.js"></script> -->
     <script src="js/app.js"></script>

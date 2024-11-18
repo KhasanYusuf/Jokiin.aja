@@ -26,30 +26,33 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <table class="table table-striped" id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Nama Toko</th>
-                                        <th>Email</th>
-                                        <th>No Telp</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Haryogi</td>
-                                        <td>HGaming</td>
-                                        <td>Haryogi@gmail.com</td>
-                                        <td>089111111111</td>
-                                        <td>
-                                            <a href="#" class="badge btn btn-primary">Detail</a>
-                                            <a href="#" class="badge btn btn-dark">Edit</a>
-                                            <a href="#" class="badge btn btn-danger">Delete</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            @if($penjokiUsers->isEmpty())
+                                <p>Belum ada user yang terdaftar sebagai penjoki</p>
+                            @else
+                                <table class="table table-striped" id="table1">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone Number</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($penjokiUsers as $user)
+                                            <tr>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>{{ $user->phone }}</td>
+                                                <td>
+                                                    <a href="#" class="badge btn btn-primary">Detail</a>
+                                                    <a href="#" class="badge btn btn-dark">Edit</a>
+                                                    <a href="#" class="badge btn btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
                         </div>
                     </div>
 

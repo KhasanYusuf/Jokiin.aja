@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::get('/profile', function () {
 
 Route::get('/login', function () {
     return view('Auth/login');
-});
+})->name('login');
 Route::get('/register', function () {
     return view('Auth/register');
 });
@@ -64,7 +65,9 @@ Route::prefix('admin')->group(function () {
         return view('admin/table-data-pelanggan');
     })->name('tabledatapelanggan');
 
-    Route::get('/tabledatapenjoki', function () {
-        return view('admin/table-data-penjoki');
-    })->name('tabledatapenjoki');
+    Route::get('/tabledatapenjoki', [AuthController::class, 'showPenjokiUsers'])->middleware('auth');
 });
+
+Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth');
+Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
+

@@ -51,4 +51,9 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return response()->json(['message' => 'Logged out successfully']);
     }
+    public function showPenjokiUsers()
+    {
+        $penjokiUsers = User::where('role', 'penjoki')->get();
+        return view('admin/table-data-penjoki', ['penjokiUsers' => $penjokiUsers]);
+    }
 }
