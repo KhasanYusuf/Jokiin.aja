@@ -2,11 +2,6 @@
 @section('title', '| Dashboard Admin')
 @section('content')
         <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
             <div class="page-content">
                 <section class="row">
                     <div class="col-12">
@@ -128,7 +123,6 @@
                 </section>
             </div>
         </div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{{asset('js/pages/apexcharts.js')}}"></script>
     <script src="{{asset('js/pages/dashboard.js')}}"></script>
