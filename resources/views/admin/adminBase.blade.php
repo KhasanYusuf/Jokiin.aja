@@ -24,22 +24,22 @@
 <body>
     <div id="app">
         <div class="header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="user-menu">
-                        <ul>
-                            <li><a href="{{url('admin/dashboard')}}"><i class="fa fa-user"></i> Dashboard</a></li>
-                            <li><a href="{{url('admin/tabledataadmin')}}"><i class="fa fa-heart"></i> Data Admin</a></li>
-                            <li><a href="{{url('admin/tabledatapenjoki')}}"><i class="fa fa-user"></i> Data Penjoki</a></li>
-                            <li><a href="{{url('admin/tabledatapelanggan')}}"><i class="fa fa-user"></i> Data Pelanggan</a></li>
-                            <li><a href="{{route('logout')}}"><i class="fa fa-user"></i> Logout</a></li>
-                        </ul>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="user-menu">
+                            <ul>
+                                <li><a href="{{url('admin/dashboard')}}"><i class="fa fa-user"></i> Dashboard</a></li>
+                                <li><a href="{{url('admin/tabledataadmin')}}"><i class="fa fa-heart"></i> Data Admin</a></li>
+                                <li><a href="{{url('admin/tabledatapenjoki')}}"><i class="fa fa-user"></i> Data Penjoki</a></li>
+                                <li><a href="{{url('admin/tabledatapelanggan')}}"><i class="fa fa-user"></i> Data Pelanggan</a></li>
+                                <li><a href="{{route('logout')}}"><i class="fa fa-user"></i> Logout</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div> <!-- End header area -->
+        </div> <!-- End header area -->
                 <!--
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">

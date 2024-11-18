@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="{{asset('css/bold.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <style>
     /* CSS untuk menghilangkan panah */
