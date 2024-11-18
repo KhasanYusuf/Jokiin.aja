@@ -376,6 +376,10 @@ z-index: 999;}
 
 .product-f-image {
     position: relative;
+    width: 200px;
+    height: 200px; /* Atur tinggi sesuai kebutuhan */
+    object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+    border-radius: 5px; /* Opsional: membuat sudut membulat */
 }
 .product-hover {
     height: 100%;
