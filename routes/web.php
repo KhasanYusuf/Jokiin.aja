@@ -47,6 +47,13 @@ Route::get('/checkout', function () {
     return view('checkout');
 });
 
+#Route Penjoki
+Route::prefix('toko')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('penjoki/dashboard-admin');
+    });
+});
+
 #Admin Route
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
