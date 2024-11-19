@@ -39,7 +39,7 @@
                                 <li><a href="{{url('/')}}"><i class="fa fa-heart"></i> Dashboard</a></li>
                                 <li><a href="{{url('post/create')}}"><i class="fa fa-heart"></i> Tambah</a></li>
                                 <li><a href="#"><i class="fa fa-user"></i> Penarikan</a></li>
-                                <li><a href="#"><i class="fa fa-user"></i> Logout</a></li>
+                                <li><form method="POST" action="{{url('/logout')}}"> @csrf <button type="submit"><i class="fa fa-user"></i> Logout</button></form></li>
                             </ul>
                         </div>
                     </div>
