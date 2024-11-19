@@ -101,11 +101,12 @@
                                 <div class="product-inner">
                                     <h2 class="product-name">{{ $post->title }}</h2>
                                     <div class="product-inner-price">
-                                        <ins>${{ number_format($post->price, 2) }}</ins>
-                                        <del>${{ number_format($post->price / 2, 2) }}</del> <!-- Contoh harga diskon -->
+                                        <ins>Rp{{ number_format($post->price, 2) }}</ins>
+                                        <del>Rp{{ number_format($post->price / 2, 2) }}</del> <!-- Contoh harga diskon -->
                                     </div>
 
-                                    <form action="" class="cart">
+                                    <form method="POST" action="{{ route('cart.add', $post->id) }}" class="cart">
+                                        @csrf
                                         <div class="quantity">
                                             <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
                                         </div>
