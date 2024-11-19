@@ -1,13 +1,5 @@
 @extends('base')
 @section('title', '| Profile')
-    @section('head')
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-    @endsection
-
 @section('content')
     <div id="app">
         <div id="sidebar" class="active">
@@ -40,8 +32,10 @@
             </div>
         </div>
     </div>
+    <!--
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="assets/vendors/apexcharts/apexcharts.js"></script>
     <script src="assets/js/pages/dashboard.js"></script>
     <script src="assets/js/main.js"></script>
+    -->
 @endsection
