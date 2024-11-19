@@ -88,11 +88,6 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6">
-                    <div class="shopping-item">
-                        <a href="user-cart.html">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
-                    </div>
-                </div>
             </div>
         </div>
     </div> <!-- End site branding area -->
@@ -112,9 +107,7 @@
                     <ul class="nav navbar-nav">
                         <li @yield('home', '') ><a href="{{ url('/') }}">Home</a></li>
                         <li @yield('shop', '') ><a href="{{ url('/shop') }}">Shop page</a></li>
-                        <li @yield('prod', '') ><a href="{{ url('/single-product') }}">Single product</a></li>
                         <li @yield('cart', '') ><a href="{{ url('/cart') }}">Cart</a></li>
-                        <li @yield('chk', '') ><a href="{{ url('checkout/') }}">Checkout</a></li>
                         <!-- <li><a href="#">Category</a></li>
                         <li><a href="#">Others</a></li>
                         <li><a href="#">Contact</a></li> -->
