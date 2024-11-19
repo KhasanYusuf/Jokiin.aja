@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CartController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,11 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+// Route::get('/', function () {
+//     return view('index');
+// })->name('home');
+Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
 
 Route::get('/profile', function () {
     return view('profile');
@@ -43,8 +47,16 @@ Route::get('/single-product', function () {
 Route::get('/cart', function () {
     return view('cart');
 });
-Route::get('/checkout', function () {
-    return view('checkout');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+
+Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth');
+Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('cart/{postId}/add', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::put('cart/update', [CartController::class, 'update'])->name('cart.update'); // route untuk update
+    Route::delete('cart/{cartId}/remove', [CartController::class, 'remove'])->name('cart.remove');
 });
 
 #Route Penjoki
@@ -75,6 +87,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/tabledatapenjoki', [AuthController::class, 'showPenjokiUsers'])->middleware('auth');
 });
 
-Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth');
-Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
+
+
 

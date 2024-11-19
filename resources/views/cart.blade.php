@@ -15,7 +15,7 @@
                             <input type="submit" value="Search">
                         </form>
                     </div>
-                    
+
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Products</h2>
                         <div class="thubmnail-recent">
@@ -23,31 +23,31 @@
                             <h2><a href="user-single-product.html">Top Up Steam Wallet</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$800.00</del>
-                            </div>                             
+                            </div>
                         </div>
                         <div class="thubmnail-recent">
                             <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="user-single-product.html">Top Up Steam Wallet</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$800.00</del>
-                            </div>                             
+                            </div>
                         </div>
                         <div class="thubmnail-recent">
                             <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="user-single-product.html">Top Up Steam Wallet</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$800.00</del>
-                            </div>                             
+                            </div>
                         </div>
                         <div class="thubmnail-recent">
                             <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="user-single-product.html">Top Up Steam Wallet</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$800.00</del>
-                            </div>                             
+                            </div>
                         </div>
                     </div>
-                    
+
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Recent Posts</h2>
                         <ul>
@@ -59,67 +59,65 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <form method="post" action="#">
-                                <table cellspacing="0" class="shop_table cart">
-                                    <thead>
-                                        <tr>
-                                            <th class="product-remove">&nbsp;</th>
-                                            <th class="product-thumbnail">&nbsp;</th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="cart_item">
-                                            <td class="product-remove">
-                                                <a title="Remove this item" class="remove" href="#">×</a> 
-                                            </td>
+                            @if($carts->isEmpty())
+                                <p>Your cart is empty.</p>
+                            @else
+                                <form method="POST" action="{{ route('cart.update') }}">
+                                    @csrf
+                                    @method('PUT')
 
-                                            <td class="product-thumbnail">
-                                                <a href="user-single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="img/product-thumb-2.jpg"></a>
-                                            </td>
-
-                                            <td class="product-name">
-                                                <a href="user-single-product.html">Ship Your Idea</a> 
-                                            </td>
-
-                                            <td class="product-price">
-                                                <span class="amount">£15.00</span> 
-                                            </td>
-
-                                            <td class="product-quantity">
-                                                <div class="quantity buttons_added">
-                                                    <input type="button" class="minus" value="-">
-                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="1" min="0" step="1">
-                                                    <input type="button" class="plus" value="+">
+                                    <table cellspacing="0" class="shop_table cart">
+                                        <thead>
+                                            <tr>
+                                                <th class="product-remove">&nbsp;</th>
+                                                <th class="product-thumbnail">&nbsp;</th>
+                                                <th class="product-name">Product</th>
+                                                <th class="product-price">Price</th>
+                                                <th class="product-quantity">Quantity</th>
+                                                <th class="product-subtotal">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($carts as $cart)
+                                                <tr class="cart_item">
+                                                    <td class="product-remove">
+                                                        <a title="Remove this item" class="remove" href="{{ route('cart.remove', $cart->id) }}">×</a>
+                                                    </td>
+                                                    <td class="product-thumbnail">
+                                                        <a href="user-single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="{{ asset('post_images/'.$cart->post->images->first()->image_path) }}"></a>
+                                                    </td>
+                                                    <td class="product-name">
+                                                        <a href="user-single-product.html">{{ $cart->post->title }}</a>
+                                                    </td>
+                                                    <td class="product-price">
+                                                        <span class="amount">Rp{{ $cart->post->price }}</span>
+                                                    </td>
+                                                    <td class="product-quantity">
+                                                        <div class="quantity buttons_added">
+                                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="{{ $cart->quantity }}" min="1" step="1" name="quantity[{{ $cart->id }}]">
+                                                        </div>
+                                                    </td>
+                                                    <td class="product-subtotal">
+                                                        <span class="amount">Rp{{ $cart->quantity * $cart->post->price }}</span>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            <tr>
+                                                <div class="cart-summary">
+                                                    <h3>Total Price: Rp{{ $totalPrice }}</h3>
+                                                    <!-- Tombol untuk melanjutkan ke halaman checkout -->
+                                                    <a href="{{ route('checkout') }}?totalPrice={{ $totalPrice }}" class="btn btn-primary">Proceed to Checkout</a>
                                                 </div>
-                                            </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
 
-                                            <td class="product-subtotal">
-                                                <span class="amount">£15.00</span> 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="actions" colspan="6">
-                                                <div class="coupon">
-                                                    <label for="coupon_code">Coupon:</label>
-                                                    <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code">
-                                                    <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
-                                                </div>
-                                                <input type="submit" value="Update Cart" name="update_cart" class="button">
-                                                <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </form>
-
+                            @endif
                             <div class="cart-collaterals">
 
 
@@ -440,8 +438,8 @@
 
 
                             </div>
-                        </div>                        
-                    </div>                    
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

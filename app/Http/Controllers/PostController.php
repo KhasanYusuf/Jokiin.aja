@@ -50,4 +50,26 @@ class PostController extends Controller
         }
         return redirect('/')->with('error', 'Unauthorized access');
     }
+    public function index()
+    {
+        // Mengambil 10 data post beserta relasi images
+        $posts = Post::with(['images', 'user'])->latest()->paginate(10);
+        // dd($posts);
+
+        // Kirimkan data ke view
+        return view('index', compact('posts'));
+    }
+    public function show($id)
+    {
+        // Cari post berdasarkan ID dan sertakan relasi gambar
+        $post = Post::with('images')->find($id);
+
+        // Jika post tidak ditemukan, kembalikan halaman 404 atau pesan error
+        if (!$post) {
+            return abort(404, 'Post not found');
+        }
+
+        // Tampilkan view detail post
+        return view('single-product', compact('post'));
+    }
 }

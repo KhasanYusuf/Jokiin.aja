@@ -122,94 +122,30 @@
                     <div class="latest-product">
                         <h2 class="section-title">Latest Products</h2>
                         <div class="product-carousel">
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="img/product-1.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="user-single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                            @foreach ($posts as $post)
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="single-product">
+                                        <div class="product-f-image">
+                                            <!-- Pilih gambar pertama atau gunakan default -->
+                                            <img src="{{ $post->images->first() ? asset('storage/post_images/' . $post->images->first()->image_path) : asset('img/default.png') }}" alt="Product Image">
+                                            <div class="product-hover">
+                                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                                <a href="{{ route('posts.show', $post->id) }}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                            </div>
+                                        </div>
+
+                                        <h2><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></h2>
+                                        <p>by <strong>{{ $post->user->name }}</strong></p> <!-- Nama pembuat post -->
+                                        <div class="product-carousel-price">
+                                            <ins>Rp{{ number_format($post->price, 2) }}</ins>
+                                            <del>Rp{{ number_format($post->price * 1.2, 2) }}</del>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <h2><a href="user-single-product.html">Joki Rank/Bintang</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$700.00</ins> <del>$100.00</del>
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="img/product-2.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="user-single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2>Joki Rank Beginner Pack</h2>
-                                <div class="product-carousel-price">
-                                    <ins>$899.00</ins> <del>$999.00</del>
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="img/product-3.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="user-single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2>Valorant Leveling Up</h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$400.00</ins> <del>$425.00</del>
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="img/product-4.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="user-single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2><a href="user-single-product.html">FREE FIRE Ranking UP</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$200.00</ins> <del>$225.00</del>
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="img/product-5.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="user-single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2>Top Up Steam</h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$1200.00</ins> <del>$1355.00</del>
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="img/product-6.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="user-single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-
-                                <h2><a href="user-single-product.html">Top Up Game</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$400.00</ins>
-                                </div>
+                            @endforeach
+                                <!-- Pagination -->
+                            <div class="pagination-wrapper">
+                                {{ $posts->links() }}
                             </div>
                         </div>
                     </div>
@@ -393,4 +329,4 @@
     </div>  -->
     <!-- End product widget area -->
 
-@endsection     
+@endsection
