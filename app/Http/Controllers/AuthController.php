@@ -86,4 +86,21 @@ class AuthController extends Controller
         $pelanggan = User::where('role', 'penjoki')->get();
         return view('admin/table-data-pelanggan', ['pelanggan' => $pelanggan]);
     }
+    public function submitNda(Request $request)
+{
+    $validated = $request->validate([
+        'nda_agreement' => 'required|in:agree,disagree',
+    ]);
+
+    if ($validated['nda_agreement'] === 'agree') {
+        $user = Auth::user();
+        $user->role = 'penjoki'; // Ubah role menjadi 'penjoki'
+        $user->save();
+
+        return redirect('/profile')->with('message', 'Anda telah menyetujui NDA. Selamat datang sebagai Penjoki!');
+    } else {
+        return redirect('/')->with('message', 'Anda tidak menyetujui NDA. Peran Anda tetap sebagai User.');
+    }
+}
+
 }

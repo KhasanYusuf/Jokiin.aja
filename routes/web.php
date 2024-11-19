@@ -35,6 +35,11 @@ Route::get('admin/profile', function () {
     return view('profile');
 })->name('admin.dashboard');
 
+Route::get('/nda', function () {
+    return view('nda');
+})->name('nda');
+Route::post('/nda/submit', [AuthController::class, 'submitNda'])->middleware('auth');
+
 Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 
 
