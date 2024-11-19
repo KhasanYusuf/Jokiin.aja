@@ -28,7 +28,7 @@ Route::get('user/profile', function () {
 })->name('user.dashboard');
 
 Route::get('penjoki/profile', function () {
-    return view('profile');
+    return view('penjoki.dashboard-admin');
 })->name('penjoki.dashboard');
 
 Route::get('admin/profile', function () {
