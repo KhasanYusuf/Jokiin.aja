@@ -37,6 +37,7 @@
                             <ul>
                                 <li><a href="{{url('profile')}}"><i class="fa fa-user"></i> Profile</a></li>
                                 <li><a href="{{url('toko/dashboard')}}"><i class="fa fa-heart"></i> Dashboard</a></li>
+                                <li><a href="{{url('post/create')}}"><i class="fa fa-heart"></i> Tambah</a></li>
                                 <li><a href="#"><i class="fa fa-user"></i> Penarikan</a></li>
                                 <li><a href="#"><i class="fa fa-user"></i> Logout</a></li>
                             </ul>
