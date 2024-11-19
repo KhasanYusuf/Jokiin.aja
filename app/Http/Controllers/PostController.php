@@ -12,7 +12,7 @@ class PostController extends Controller
     public function create()
     {
         if (Auth::check() && Auth::user()->role === 'penjoki') {
-            return view('penjoki.post');
+            return view('penjoki/post');
         }
         return redirect('/')->with('error', 'Unauthorized access');
     }

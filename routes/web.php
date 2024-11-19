@@ -23,9 +23,19 @@ use App\Http\Controllers\CartController;
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
 
-Route::get('/profile', function () {
+Route::get('user/profile', function () {
     return view('profile');
-});
+})->name('user.dashboard');
+
+Route::get('penjoki/profile', function () {
+    return view('profile');
+})->name('penjoki.dashboard');
+
+Route::get('admin/profile', function () {
+    return view('profile');
+})->name('admin.dashboard');
+
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 
 
 Route::get('/login', function () {
@@ -49,7 +59,7 @@ Route::get('/cart', function () {
 });
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 
-Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth');
+Route::get('/post/create', [PostController::class, 'create']);
 Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {

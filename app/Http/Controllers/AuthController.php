@@ -51,9 +51,39 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return response()->json(['message' => 'Logged out successfully']);
     }
+    public function profile()
+    {
+        // Cek apakah pengguna telah login
+        if (!Auth::check()) {
+            return redirect('/login')->with('message', 'Please log in to access your profile.');
+        }
+
+        // Dapatkan pengguna yang sedang login
+        $user = Auth::user();
+
+        // Redirect berdasarkan role
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        } elseif ($user->role === 'penjoki') {
+            return redirect()->route('penjoki.dashboard');
+        } else {
+            return redirect()->route('user.dashboard'); // Default untuk role 'user'
+        }
+    }
+
     public function showPenjokiUsers()
     {
         $penjokiUsers = User::where('role', 'penjoki')->get();
         return view('admin/table-data-penjoki', ['penjokiUsers' => $penjokiUsers]);
+    }
+    public function showAdminUsers()
+    {
+        $admin = User::where('role', 'Admin')->get();
+        return view('admin/table-data-admin', ['admin' => $admin]);
+    }
+    public function showCommonUsers()
+    {
+        $pelanggan = User::where('role', 'penjoki')->get();
+        return view('admin/table-data-pelanggan', ['pelanggan' => $pelanggan]);
     }
 }
