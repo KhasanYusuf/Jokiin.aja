@@ -64,8 +64,8 @@ Route::get('/cart', function () {
 });
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 
-Route::get('/post/create', [PostController::class, 'create']);
-Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
+Route::get('/post/create', [PostController::class, 'create'])->middleware('auth');
+Route::post('/post', [PostController::class, 'store'])->name('post.store');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'index'])->name('cart.index');

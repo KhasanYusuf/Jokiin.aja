@@ -19,12 +19,14 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        // \Log::info('Before validation');
+        // dd($request);
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|string',
             'details' => 'required|string',
             'duration' => 'required|integer',
-            'price' => 'required|numeric',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'price' => 'required|integer',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         if (Auth::check() && Auth::user()->role === 'penjoki') {
@@ -35,6 +37,8 @@ class PostController extends Controller
                 'duration' => $request->duration,
                 'price' => $request->price,
             ]);
+
+
 
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $image) {

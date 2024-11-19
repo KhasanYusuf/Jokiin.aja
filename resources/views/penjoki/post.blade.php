@@ -48,10 +48,10 @@
                             <a href="#" class="btn btn-danger" style="margin-bottom: 40px;">Kembali</a>
                             <h4 class="card-title">Tambah Produk</h4>
                         </div>
-                        <form method="POST" action="/posts" enctype="multipart/form-data">
-                            @csrf
-                            <div class="card-body">
-                                <div class="row">
+                        <div class="card-body">
+                            <div class="row">
+                                    <form method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
+                                        @csrf
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="basicInput">Judul</label>
@@ -83,15 +83,15 @@
                                             <fieldset>
                                                 <div class="input-group mb-3">
                                                     <label class="input-group-text" for="inputGroupFile01"><i class="bi bi-upload"></i></label>
-                                                    <input type="file" class="form-control" id="inputGroupFile01" name="images[]" multiple>
+                                                    <input type="file" class="form-control" id="images" name="images[]" multiple>
                                                 </div>
                                             </fieldset>
                                         </div>
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>
                                 </div>
+                            </form>
                             </div>
-                        </form>
                     </div>
                 </section>
             </div>
